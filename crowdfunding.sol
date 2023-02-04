@@ -30,6 +30,7 @@ contract Campaign {
         require(msg.sender == creator, "You are not the creator so you cannot claim the funds.");
         require(currentAmount >= goal, "The goal has not yet been reached!");
         require(token.transfer(msg.sender, currentAmount), "Something went wrong and we couldn't transfer the funds.");
+        currentAmount = 0;
         emit Claim(msg.sender, currentAmount);
     }
 
